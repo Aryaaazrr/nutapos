@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Pajak;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pajak\PajakRequest;
+use App\Http\Resources\Pajak\PajakResource;
 use Illuminate\Http\Request;
 
 class PajakController extends Controller
@@ -18,18 +19,12 @@ class PajakController extends Controller
         $total = $validated['total'];
         $persen_pajak = $validated['persen_pajak'];
 
-        if ($persen_pajak == 0) {
-        return response()->json([
-            'error' => 'Persentase pajak tidak boleh 0'
-            ], 400); // Bad Request
-        }
-
         $net_sales = $total / (1 + ($persen_pajak / 100));
         $pajak_rp = $total - $net_sales;
 
-        return response()->json([
-            'net_sales' => round($net_sales, 0),
-            'pajak_rp' => round($pajak_rp, 0),
+        return new PajakResource([
+            'net_sales' => round($net_sales, 2),
+            'pajak_rp' => round($pajak_rp, 2),
         ], 200);
     }
 

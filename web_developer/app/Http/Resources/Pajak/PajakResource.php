@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Api\Pajak;
+namespace App\Http\Resources\Pajak;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -12,11 +12,11 @@ class PajakResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
         return [
-            'net_sales' => $this->net_sales,
-            'pajak_rp'  => $this->pajak_rp,
+            'net_sales' => $this['net_sales'],
+            'pajak_rp'  => $this['pajak_rp'],
         ];
     }
 }
