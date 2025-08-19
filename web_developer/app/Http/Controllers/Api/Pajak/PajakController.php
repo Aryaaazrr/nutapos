@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Pajak;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pajak\PajakRequest;
-use App\Http\Resources\Api\Pajak\PajakResource;
 use Illuminate\Http\Request;
 
 class PajakController extends Controller
